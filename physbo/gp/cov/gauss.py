@@ -340,10 +340,10 @@ class gauss:
         """
         params, width, scale = self.prepare(params)
         scale2 = scale**2
-        amp = np.sqrt(2 / num_basis)
+        amp = np.sqrt((2 * scale2) / num_basis)
         m = np.zeros(self.num_dim)
         c = np.eye(self.num_dim, self.num_dim)
-        W = np.random.multivariate_normal(m, c, num_basis)
+        W = np.random.multivariate_normal(m, c, num_basis) / width
         b = np.random.uniform(0, 2 * np.pi, size=num_basis)
         return (W, b, amp)
 
